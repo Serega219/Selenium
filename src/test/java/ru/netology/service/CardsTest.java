@@ -100,8 +100,19 @@ public class CardsTest {
 
     }
     @Test
-    void shouldNegativeResultNameTest5() {
+    void shouldNegativeResultNameTest6() {
         driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("");
+        driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("+79277741123");
+        driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
+        driver.findElement(By.cssSelector("button")).click();
+        var actualText = driver.findElement(By.cssSelector("[data-test-id=name].input_invalid .input__sub")).getText().trim();
+        assertEquals("Поле обязательно для заполнения", actualText);
+
+
+    }
+    @Test
+    void shouldNegativeResultNameTest7() {
+        driver.findElement(By.cssSelector("[data-test-id='name'] input")).sendKeys("Сергеев Сергей");
         driver.findElement(By.cssSelector("[data-test-id='phone'] input")).sendKeys("");
         driver.findElement(By.cssSelector("[data-test-id='agreement']")).click();
         driver.findElement(By.cssSelector("button")).click();
